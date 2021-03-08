@@ -1,17 +1,14 @@
-package debashis.me.ckycmanager.Adapters
+package debashis.me.ckycmanager.adapters
 
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
-import android.view.View.inflate
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import debashis.me.ckycmanager.R
 import debashis.me.ckycmanager.data.DayData
-import kotlin.coroutines.coroutineContext
 
 class RecentAdapter(val dayArray:List<DayData>,var context: Context):RecyclerView.Adapter<RecentAdapter.RecentViewHolder>() {
 

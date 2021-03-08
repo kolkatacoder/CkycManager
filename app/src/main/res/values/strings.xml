@@ -1,12 +1,17 @@
 <resources>
     <string name="app_name">CkycManager</string>
     <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+
+
+    <!-- Preference Titles -->
+    <string name="prices_title">Prices Of Each Item</string>
+    <string name="scan_title">Scan</string>
+    <string name="web_maker">Web Maker</string>
+    <string name="web_cheker">Web Cheker</string>
+    <string name="maker">Maker</string>
+    <string name="cheker">Cheker</string>
+    <string name="account_number">Account Numbering</string>
+
 </resources>

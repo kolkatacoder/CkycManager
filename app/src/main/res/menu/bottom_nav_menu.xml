@@ -9,7 +9,7 @@
         android:icon="@drawable/ic_bill"
         android:id="@+id/bills"/>
 
-    <item android:id="@+id/price"
+    <item android:id="@+id/prices"
         android:icon="@drawable/ic_price"
         android:title="Prices"/>
 
