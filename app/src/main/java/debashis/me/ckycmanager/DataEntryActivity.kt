@@ -3,8 +3,11 @@ package debashis.me.ckycmanager
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
 
 class DataEntryActivity : AppCompatActivity() {
 
@@ -26,10 +29,23 @@ class DataEntryActivity : AppCompatActivity() {
         //Add button
         findViewById<Button>(R.id.addBtn).setOnClickListener {
             val layout = findViewById<LinearLayout>(R.id.linearLayout)
-            if(numberOfField != 6) {
+            if(numberOfField <= 6) {
                 numberOfField++
                 addView(layout)
             }
+        }
+        //Save button
+        findViewById<Button>(R.id.saveBtn).setOnClickListener {
+            val layoutList = findViewById<LinearLayout>(R.id.linearLayout)
+            var allcount =""
+            for(i:Int in 0 until layoutList.childCount){
+                Log.i("DataEntryActivity", "onCreate: $i")
+                val datalist = layoutList.getChildAt(i)
+              val text =  datalist.findViewById<EditText>(R.id.value)
+                val spinner = datalist.findViewById<Spinner>(R.id.dataSpiner)
+                allcount +="${text.text} and ${spinner.selectedItemPosition} "
+        }
+           Toast.makeText(this@DataEntryActivity,"$allcount save to your phone",Toast.LENGTH_SHORT).show()
         }
 
 
@@ -44,7 +60,7 @@ class DataEntryActivity : AppCompatActivity() {
         spinner.adapter = adapter
 
         //Cancel button implementation
-        parent.findViewById<Button>(R.id.cancle_button).setOnClickListener {
+        parent.findViewById<ImageButton>(R.id.cancle_button).setOnClickListener {
             if(numberOfField >0) {
                 numberOfField--
                 layout.removeView(parent)
@@ -52,4 +68,6 @@ class DataEntryActivity : AppCompatActivity() {
         }
         layout.addView(parent)
     }
+
+
 }

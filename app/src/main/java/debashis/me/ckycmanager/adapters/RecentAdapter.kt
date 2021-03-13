@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import debashis.me.ckycmanager.R
-import debashis.me.ckycmanager.data.DayData
+import debashis.me.ckycmanager.data.Day
 
-class RecentAdapter(val dayArray:List<DayData>,var context: Context):RecyclerView.Adapter<RecentAdapter.RecentViewHolder>() {
+class RecentAdapter(val dayArray:List<Day>, var context: Context):RecyclerView.Adapter<RecentAdapter.RecentViewHolder>() {
 
 
     inner class RecentViewHolder(v: View):RecyclerView.ViewHolder(v){

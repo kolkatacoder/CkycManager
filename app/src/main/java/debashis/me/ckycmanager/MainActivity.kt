@@ -8,7 +8,6 @@ import androidx.fragment.app.commit
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import debashis.me.ckycmanager.fragments.Bills
 import debashis.me.ckycmanager.fragments.Dashboard
-import debashis.me.ckycmanager.fragments.PriceFragment
 import debashis.me.ckycmanager.fragments.Prices
 
 const val CUSTOME_DATE="custome_date"
