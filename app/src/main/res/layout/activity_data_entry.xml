@@ -29,12 +29,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></LinearLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/addBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_blue_dark"
         android:text="Add"
+        android:textColor="#297EFF"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        android:drawableEnd="@drawable/ic_add"
+        android:drawableTint="#297EFF"
+        android:drawablePadding="0dp"
+        android:background="@drawable/rounded_blue_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
@@ -42,12 +50,17 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.154" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/saveBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_green_light"
         android:text="save"
+        android:textColor="#29BC24"
+        android:drawableTint="#29BC24"
+        android:drawableStart="@drawable/ic_save"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:background="@drawable/green_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.925"

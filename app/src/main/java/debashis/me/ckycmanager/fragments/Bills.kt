@@ -5,15 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingComponent
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import debashis.me.ckycmanager.R
 import debashis.me.ckycmanager.adapters.BillAdapter
+import debashis.me.ckycmanager.databinding.FragmentBillsBinding
+import debashis.me.ckycmanager.databinding.FragmentPricesBinding
 
 class Bills : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var binding: FragmentBillsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +29,12 @@ class Bills : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_bills,container,false)
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bills, container, false)
+//        return inflater.inflate(R.layout.fragment_bills, container, false)
+        return  binding.root
     }
 
 

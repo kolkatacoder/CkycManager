@@ -19,7 +19,7 @@ class DataEntryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_data_entry)
 
 
-        //Add a default data
+        //Add a default date
         addView(findViewById<LinearLayout>(R.id.linearLayout))
         //set date in the text
         val date = intent.getStringExtra(CUSTOME_DATE)
