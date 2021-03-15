@@ -9,9 +9,9 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "kyc_data_table")
 data class Kyc(
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @ColumnInfo(name = "id")
-    val id : Int,
+    val id : String,
     @ColumnInfo(name = "date")
     val date: Int,
     @ColumnInfo(name = "month")
@@ -30,4 +30,7 @@ data class Kyc(
     val web_checker: Int,
     @ColumnInfo(name = "account_numbering")
     val account_numbering : Int
+
+
+
 )

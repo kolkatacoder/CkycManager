@@ -1,4 +1,4 @@
-package debashis.me.ckycmanager.fragments
+ package debashis.me.ckycmanager.fragments
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -9,24 +9,27 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import debashis.me.ckycmanager.adapters.RecentAdapter
-import debashis.me.ckycmanager.CUSTOME_DATE
 import debashis.me.ckycmanager.DataEntryActivity
 import debashis.me.ckycmanager.R
+import debashis.me.ckycmanager.data.Dates
 import debashis.me.ckycmanager.data.Day
+import debashis.me.ckycmanager.data.Keys
+import debashis.me.ckycmanager.viewModel.KycViewModel
 import java.util.*
+import androidx.lifecycle.Observer
 
 
-class Dashboard : Fragment() {
+ class Dashboard : Fragment() {
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    lateinit var kycViewModel:KycViewModel
 
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +42,7 @@ class Dashboard : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+            kycViewModel = ViewModelProvider(this).get(KycViewModel::class.java)
 
        initFloatinfbutton(view)
         init(view)
@@ -48,13 +51,14 @@ class Dashboard : Fragment() {
     //Initialize Recycalerview
     fun init(v: View){
         val recylerView =  v.findViewById<RecyclerView>(R.id.recent)
-        val adapter = RecentAdapter(daydata(),requireContext())
+        val adapter = RecentAdapter(requireContext())
         val layoutManager =  LinearLayoutManager(requireContext())
         layoutManager.orientation = RecyclerView.VERTICAL
-
         recylerView.layoutManager = layoutManager
-
         recylerView.adapter = adapter
+        kycViewModel.getDataByMonth(3).observe(viewLifecycleOwner, Observer {kyc->
+            adapter.setData(kyc)
+        })
 
     }
     fun daydata():List<Day>{
@@ -154,10 +158,7 @@ class Dashboard : Fragment() {
                 when(p){
                     0->{
                         val cal = Calendar.getInstance()
-                        val year =   cal.get(Calendar.YEAR)
-                        val month =   cal.get(Calendar.MONTH)
-                        val day =   cal.get(Calendar.DAY_OF_MONTH)
-                        val date = "$day-${month+1}-$year"
+                        val date = Dates(cal.get(Calendar.DAY_OF_MONTH),(cal.get(Calendar.MONTH)+1), cal.get(Calendar.YEAR))
                         startDataEntryActivity(date)
 
                     }
@@ -175,29 +176,32 @@ class Dashboard : Fragment() {
 
 
 // Pick Date
-    private fun pickupdate():String {
-        val datepicker = DatePicker(requireContext())
+    private fun pickupdate() {
+
         val cal = Calendar.getInstance()
-        var date =""
+
         val datePickerDialog = DatePickerDialog(requireContext(),object : DatePickerDialog.OnDateSetListener{
             override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-                date = "$dayOfMonth-${month+1}-$year"
+              val date = Dates(dayOfMonth,(month+1),year)
 
                 startDataEntryActivity(date)
             }
 
         },cal[Calendar.YEAR],cal[Calendar.MONTH],cal[Calendar.DAY_OF_MONTH])
         datePickerDialog.show()
-        return date
+
     }
 
     // Start second Activity
-    fun startDataEntryActivity(date: String){
-        val intent = Intent(requireContext(), DataEntryActivity::class.java)
-        intent.putExtra(CUSTOME_DATE,date)
-
-        startActivity(intent)
+    fun startDataEntryActivity(date: Dates){
+        val intent = Intent(requireContext(), DataEntryActivity::class.java).apply {
+            putExtra(Keys.DAY,date.day)
+            putExtra(Keys.MONTH,date.month)
+            putExtra(Keys.YEAR,date.year)
+        startActivity(this)
+        }
     }
+
 
 
 

@@ -6,11 +6,10 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.commit
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
-import debashis.me.ckycmanager.fragments.Bills
+import debashis.me.ckycmanager.fragments.BillsFragment
 import debashis.me.ckycmanager.fragments.Dashboard
 import debashis.me.ckycmanager.fragments.Prices
 
-const val CUSTOME_DATE="custome_date"
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,7 +35,7 @@ class MainActivity : AppCompatActivity() {
           supportFragmentManager.commit {
               replace(R.id.layout_container,when(id){
                   R.id.dashboard -> Dashboard.newInstance()
-                  R.id.bills -> Bills.newInstance()
+                  R.id.bills -> BillsFragment.newInstance()
                   R.id.prices -> Prices.newInstance()
                   else -> Dashboard.newInstance()
               })
