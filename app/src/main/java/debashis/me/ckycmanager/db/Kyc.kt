@@ -1,23 +1,20 @@
 package debashis.me.ckycmanager.db
 
 import androidx.annotation.ColorInt
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
+import debashis.me.ckycmanager.data.DateConverter
+import java.util.*
 
 
-@Entity(tableName = "kyc_data_table")
+@Entity(tableName = "kyc_data_table",indices = [Index(value = ["date"],unique = true)])
 data class Kyc(
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    val id : String,
+    val id : Int,
     @ColumnInfo(name = "date")
-    val date: Int,
-    @ColumnInfo(name = "month")
-    val month:Int,
-    @ColumnInfo(name = "year")
-    val year: Int,
+    @TypeConverters(DateConverter::class)
+    val date: Date?,
     @ColumnInfo(name = "ckyc")
     val ckyc: Int,
     @ColumnInfo( name = "maker")

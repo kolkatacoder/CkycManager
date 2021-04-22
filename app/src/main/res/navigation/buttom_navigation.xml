@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/buttom_navigation"
+    app:startDestination="@id/dashboardFragment">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="debashis.me.ckycmanager.fragments.DashboardFragment"
+        android:label="DashboardFragment" />
+    <fragment
+        android:id="@+id/billsFragment"
+        android:name="debashis.me.ckycmanager.fragments.BillsFragment"
+        android:label="BillsFragment" >
+        <action
+            android:id="@+id/action_billsFragment_to_imageViweFragment"
+            app:destination="@id/imageViweFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pricesFragment"
+        android:name="debashis.me.ckycmanager.fragments.PricesFragment"
+        android:label="PricesFragment" />
+    <fragment
+        android:id="@+id/imageViweFragment"
+        android:name="debashis.me.ckycmanager.fragments.ImageViweFragment"
+        android:label="fragment_image_viwe"
+        tools:layout="@layout/fragment_image_viwe" />
+</navigation>

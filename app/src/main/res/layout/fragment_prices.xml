@@ -5,10 +5,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.Prices">
+    android:layout_height="wrap_content"
+    android:paddingBottom="20dp"
+    tools:context=".fragments.PricesFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -19,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:fontFamily="@font/archivo_black"
+        android:fontFamily="@font/roboto_condensed_bold"
         android:text="Price For Each Items"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/roboto_condensed_bold"
         android:text="@string/scan_title"
         android:textSize="24sp"
@@ -95,6 +100,7 @@
         android:drawableStart="@drawable/ic_costome_ruppe"
         android:drawablePadding="5dp"
         android:ems="10"
+        android:imeOptions="actionDone"
         android:inputType="numberDecimal"
         android:paddingStart="12dp"
         android:paddingTop="5dp"
@@ -124,6 +130,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:ems="10"
+        android:imeOptions="actionDone"
         android:inputType="numberDecimal"
         android:drawablePadding="5dp"
         android:background="@drawable/custome_input"
@@ -156,6 +163,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:ems="10"
+        android:imeOptions="actionDone"
         android:inputType="numberDecimal"
         android:drawablePadding="5dp"
         android:background="@drawable/custome_input"
@@ -188,6 +196,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:ems="10"
+        android:imeOptions="actionDone"
         android:inputType="numberDecimal"
         android:drawablePadding="5dp"
         android:background="@drawable/custome_input"
@@ -220,6 +229,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:ems="10"
+        android:imeOptions="actionDone"
         android:inputType="numberDecimal"
         android:drawablePadding="5dp"
         android:background="@drawable/custome_input"
@@ -243,6 +253,22 @@
         app:layout_constraintEnd_toStartOf="@+id/scan_value"
         app:layout_constraintTop_toTopOf="@+id/scan_value" />
 
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/account_number" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
 </layout>

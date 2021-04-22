@@ -22,122 +22,33 @@
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
+
+
         <Constraint
-            android:id="@+id/month_dashboard"
-            android:elevation="10dp"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintVertical_bias="0.0"
-            motion:layout_constraintTop_toTopOf="parent"
-            motion:layout_constraintStart_toStartOf="parent" />
-        <Constraint
-            android:id="@+id/fab"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="50dp"
-            android:layout_marginEnd="35dp" />
-        <Constraint
-            android:id="@+id/dates"
-            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="@+id/total_month_text"
+            android:layout_marginTop="8dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/month_dashboard"
+            motion:layout_constraintEnd_toEndOf="@+id/total_month_text"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintVertical_bias="0.060000002"
-            motion:layout_constraintTop_toBottomOf="@+id/month_dashboard"
-            motion:layout_constraintHorizontal_bias="0.074" />
+            motion:layout_constraintTop_toBottomOf="@+id/total_month_text"
+            android:id="@+id/total_month_value" />
         <Constraint
-            android:id="@+id/textView"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="25dp"
-            motion:layout_constraintTop_toTopOf="@+id/dates"
-            motion:layout_constraintStart_toEndOf="@+id/dates"
-            motion:layout_constraintBottom_toBottomOf="@+id/dates"
-            motion:layout_constraintVertical_bias="1.0"
-            motion:layout_constraintHorizontal_bias="0.75" />
-        <Constraint
-            android:id="@+id/recent"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
             android:layout_height="0dp"
             motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="10dp"
             motion:layout_constraintVertical_bias="0.637"
             motion:layout_constraintTop_toBottomOf="@+id/dates"
             motion:layout_constraintHorizontal_bias="0.0"
-            motion:layout_constraintStart_toStartOf="parent" />
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            android:id="@+id/recent" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
 
-        <Constraint
-            android:id="@+id/month_dashboard"
-            android:elevation="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintVertical_bias="0.0"
-            motion:layout_constraintTop_toTopOf="parent"
-            motion:layout_constraintStart_toStartOf="parent" />
-
-        <Constraint
-            android:id="@+id/fab"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha="0"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="50dp"
-            android:layout_marginEnd="35dp" />
-        <Constraint
-            android:id="@+id/dates"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintVertical_bias="0.060000002"
-            motion:layout_constraintTop_toBottomOf="@+id/month_dashboard"
-            motion:layout_constraintHorizontal_bias="0.074"
-            android:alpha="0" />
-        <Constraint
-            android:id="@+id/textView"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="25dp"
-            motion:layout_constraintTop_toTopOf="@+id/dates"
-            motion:layout_constraintStart_toEndOf="@+id/dates"
-            motion:layout_constraintBottom_toBottomOf="@+id/dates"
-            motion:layout_constraintVertical_bias="1.0"
-            motion:layout_constraintHorizontal_bias="0.75"
-            android:alpha="0" />
-        <Constraint
-            android:id="@+id/recent"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintVertical_bias="0.637"
-            motion:layout_constraintTop_toBottomOf="@+id/dates"
-            motion:layout_constraintHorizontal_bias="0.0"
-            motion:layout_constraintStart_toStartOf="parent"
-            android:alpha="0" />
-
 
     </ConstraintSet>
-    <ConstraintSet android:id="@+id/bottom_nav_start" >
-    </ConstraintSet>
-    <ConstraintSet android:id="@+id/bottom_nav_end" />
-    <Transition
-        motion:constraintSetStart="@+id/bottom_nav_start"
-        motion:constraintSetEnd="@+id/bottom_nav_end" />
 </MotionScene>

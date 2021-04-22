@@ -3,40 +3,89 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:layout_marginStart="20dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="20dp"
-    android:layout_marginBottom="8dp"
-    android:elevation="8dp"
-    android:background="@drawable/rounded_list_view">
 
-    <TextView
-        android:id="@+id/dateText"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:fontFamily="@font/baloo_bhaina"
-        android:text="TextView"
-        android:textColor="#707070"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/white"
+        android:paddingBottom="10dp"
+        app:cardCornerRadius="8dp">
 
-    <TextView
-        android:id="@+id/moneyText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
-        android:fontFamily="@font/baloo_bhaina"
-        android:text="TextView"
-        android:textColor="#707070"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/upper_const"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:paddingEnd="10dp"
+            android:paddingRight="10dp"
+            app:layoutDescription="@xml/daily_data_list_view_xml_upper_const_scene">
+
+            <ImageView
+                android:id="@+id/down_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:rotation="-90"
+                android:rotationX="0"
+                android:src="@drawable/ic_drop_down"
+                android:translationZ="@dimen/fab_margin"
+                app:layout_constraintBottom_toTopOf="@+id/lower_container"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/dateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/baloo_bhaina"
+                android:text="5 Feb"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/down_arrow"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/moneyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:drawableStart="@drawable/ic_rupee"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/archivo_black"
+                android:text="460.0"
+                android:textColor="@color/green"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/dateText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/dateText"
+                app:layout_constraintTop_toTopOf="@+id/dateText" />
+
+            <LinearLayout
+                android:id="@+id/lower_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dateText" />
+
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

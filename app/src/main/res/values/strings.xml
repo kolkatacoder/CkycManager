@@ -3,8 +3,6 @@
     <string name="action_settings">Settings</string>
 
 
-
-
     <!-- Preference Titles -->
     <string name="prices_title">Prices Of Each Item</string>
     <string name="scan_title">Scan</string>
@@ -13,5 +11,6 @@
     <string name="maker">Maker</string>
     <string name="cheker">Cheker</string>
     <string name="account_number">Account Numbering</string>
+
 
 </resources>
