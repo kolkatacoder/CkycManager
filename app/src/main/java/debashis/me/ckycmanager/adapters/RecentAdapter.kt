@@ -16,6 +16,7 @@ import androidx.core.view.marginEnd
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.color.MaterialColors.getColor
+import com.google.android.material.tabs.TabLayout
 import debashis.me.ckycmanager.R
 import debashis.me.ckycmanager.data.DateConverter
 import debashis.me.ckycmanager.data.Day
@@ -32,26 +33,26 @@ import java.text.SimpleDateFormat
 
 
 class RecentAdapter(private var kycData: List<Kyc>) : RecyclerView.Adapter<RecentViewHolder>() {
-
-    lateinit var binding: DailyDataListViewBinding
+        private val TAG = "Recent Adapter"
+    lateinit var binding: DailyDataListViewTestModeOnBinding
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecentViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        binding = DataBindingUtil.inflate(inflater, R.layout.daily_data_list_view, parent, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.daily_data_list_view_test_mode_on, parent, false)
         return RecentViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: RecentViewHolder, position: Int) {
         holder.bindView(kycData[position])
-
+        Log.i(TAG, "onBindViewHolder: ")
 
     }
 
 
 
     override fun getItemCount(): Int {
-        Log.i("Recent Adapter", "getItemCount: ${kycData.size}")
+//        Log.i("Recent Adapter", "getItemCount: ${kycData.size}")
         return kycData.size
     }
 
@@ -60,9 +61,48 @@ class RecentAdapter(private var kycData: List<Kyc>) : RecyclerView.Adapter<Recen
         notifyDataSetChanged()
     }
 
+    override fun onViewRecycled(holder: RecentViewHolder) {
+        super.onViewRecycled(holder)
+        Log.i(TAG, "onViewRecycled: ${holder.adapterPosition} ")
+    }
+
+    override fun onViewAttachedToWindow(holder: RecentViewHolder) {
+        super.onViewAttachedToWindow(holder)
+        Log.i(TAG, "onViewAttachedToWindow: ")
+    }
+
+    override fun onViewDetachedFromWindow(holder: RecentViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+
+        Log.i(TAG, "onViewDetachedFromWindow: ")
+    }
+
+    override fun registerAdapterDataObserver(observer: RecyclerView.AdapterDataObserver) {
+        super.registerAdapterDataObserver(observer)
+        Log.i(TAG, "registerAdapterDataObserver: ")
+    }
+
+    override fun unregisterAdapterDataObserver(observer: RecyclerView.AdapterDataObserver) {
+        super.unregisterAdapterDataObserver(observer)
+        Log.i(TAG, "unregisterAdapterDataObserver: ")
+    }
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+        Log.i(TAG, "onAttachedToRecyclerView: ")
+    }
+
+    override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
+        super.onDetachedFromRecyclerView(recyclerView)
+        Log.i(TAG, "onDetachedFromRecyclerView: ")
+    }
 }
 
-class RecentViewHolder(private val binding: DailyDataListViewBinding) : RecyclerView.ViewHolder(binding.root) {
+
+
+
+
+class RecentViewHolder(private val binding: DailyDataListViewTestModeOnBinding) : RecyclerView.ViewHolder(binding.root) {
 
     var isgray = true
     var noViewAvailable = true
@@ -70,9 +110,25 @@ class RecentViewHolder(private val binding: DailyDataListViewBinding) : Recycler
 
 
     fun bindView(kyc: Kyc) {
-
+        binding.lowerContainer.removeAllViews()
+        noViewAvailable = true
+        isgray = true
+        if (binding.lowerContainer.isVisible) {
+            binding.downArrow.rotation = -90f
+            binding.lowerContainer.isVisible = false
+        }
         binding.dateText.text = kyc.date?.toDayMonth() ?: ""
         binding.moneyText.text = "${runBlocking { Keys.getTotalMoney(kyc,binding.dateText.context) }}"
+//        binding.lowerConst.isVisible = false
+        binding.upperConst.setOnClickListener {
+            if (binding.lowerContainer.isVisible) {
+                binding.downArrow.rotation = -90f
+                binding.lowerContainer.isVisible = false
+            } else {
+                binding.downArrow.rotation = 0f
+                binding.lowerContainer.isVisible = true
+            }
+        }
 
         /**Check if the view is already build or not if: Yes  then don't need to rebuild again if:Not then build it
         default if :Not */
@@ -80,6 +136,7 @@ class RecentViewHolder(private val binding: DailyDataListViewBinding) : Recycler
             addViewAndData(kyc)
             noViewAvailable = false
         }
+       
 
 //            binding.upperConst.setOnClickListener {
 //
